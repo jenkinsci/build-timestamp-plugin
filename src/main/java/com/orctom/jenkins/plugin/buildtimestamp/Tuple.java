@@ -16,13 +16,6 @@ public class Tuple extends AbstractDescribableImpl<Tuple> {
 	private String shiftExpression;
 
 	@DataBoundConstructor
-	public Tuple(String key, String value) {
-		this.key = key;
-		this.value = value;
-		this.shiftExpression = "";
-	}
-
-	@DataBoundConstructor
 	public Tuple(String key, String value, String shiftExpression) {
 		this.key = key;
 		this.value = value;
