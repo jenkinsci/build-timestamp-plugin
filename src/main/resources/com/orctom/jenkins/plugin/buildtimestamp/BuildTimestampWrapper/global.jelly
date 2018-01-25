@@ -19,6 +19,10 @@
                             <f:textbox field="value" value="${instance.value}"
                                        checkUrl="'${rootURL}/descriptorByName/com.orctom.jenkins.plugin.buildtimestamp.BuildTimestampWrapper/checkValue?value='+escape(this.value)" />
                         </f:entry>
+                        <f:entry title="Shift timestamp:" field="shiftExpression" help="/plugin/build-timestamp/help-shiftExpression.html">
+                            <f:textbox field="shiftExpression" value="${instance.shiftExpression}"
+                                       checkUrl="'${rootURL}/descriptorByName/com.orctom.jenkins.plugin.buildtimestamp.BuildTimestampWrapper/checkShiftExpression?shiftExpression='+escape(this.value)" />
+                        </f:entry>
                         <f:entry title="">
                             <div align="right">
                                 <f:repeatableDeleteButton />

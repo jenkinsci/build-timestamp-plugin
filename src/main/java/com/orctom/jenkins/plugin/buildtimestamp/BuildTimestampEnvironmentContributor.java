@@ -41,11 +41,11 @@ public class BuildTimestampEnvironmentContributor extends EnvironmentContributor
 			TimeZone timeZone = TimeZone.getTimeZone(descriptor.getTimezone());
 			String pattern = descriptor.getPattern();
 
-			setTimestamp(timestampProperties, DEFAULT_PROPERTY, format(timestamp, timeZone, pattern));
+			setTimestamp(timestampProperties, DEFAULT_PROPERTY, format(timestamp, timeZone, pattern, ""));
 
 			Set<Tuple> extraProperties = descriptor.getExtraProperties();
 			for (Tuple property : extraProperties) {
-				setTimestamp(timestampProperties, property.getKey(), format(timestamp, timeZone, property.getValue()));
+				setTimestamp(timestampProperties, property.getKey(), format(timestamp, timeZone, property.getValue(), property.getShiftExpression()));
 			}
 		}
 		return timestampProperties;
@@ -56,10 +56,12 @@ public class BuildTimestampEnvironmentContributor extends EnvironmentContributor
 		System.setProperty(key, value);
 	}
 
-	private String format(Calendar timestamp, TimeZone timeZone, String pattern) {
+	private String format(Calendar timestamp, TimeZone timeZone, String pattern, String shiftExpression) {
+		Calendar timestamp2 = ShiftExpressionHelper.doShift(timestamp, shiftExpression);
+
 		SimpleDateFormat format = new SimpleDateFormat(pattern);
 		format.setTimeZone(timeZone);
-		return format.format(timestamp.getTime());
+		return format.format(timestamp2.getTime());
 	}
 
 	public DescriptorImpl getDescriptorImpl() {

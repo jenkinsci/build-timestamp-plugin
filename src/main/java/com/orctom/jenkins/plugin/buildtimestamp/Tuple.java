@@ -13,11 +13,20 @@ public class Tuple extends AbstractDescribableImpl<Tuple> {
 
 	private String key;
 	private String value;
+	private String shiftExpression;
+
+//	@DataBoundConstructor
+//	public Tuple(String key, String value) {
+//		this.key = key;
+//		this.value = value;
+//		this.shiftExpression = "";
+//	}
 
 	@DataBoundConstructor
-	public Tuple(String key, String value) {
+	public Tuple(String key, String value, String shiftExpression) {
 		this.key = key;
 		this.value = value;
+		this.shiftExpression = shiftExpression;
 	}
 
 	public String getKey() {
@@ -26,6 +35,10 @@ public class Tuple extends AbstractDescribableImpl<Tuple> {
 
 	public String getValue() {
 		return value;
+	}
+
+	public String getShiftExpression() {
+		return shiftExpression;
 	}
 
 	@Extension
@@ -40,20 +53,21 @@ public class Tuple extends AbstractDescribableImpl<Tuple> {
 
 		Tuple tuple = (Tuple) o;
 
-		if (key != null ? !key.equals(tuple.key) : tuple.key != null) return false;
-		return !(value != null ? !value.equals(tuple.value) : tuple.value != null);
-
+		if (!key.equals(tuple.key)) return false;
+		if (!value.equals(tuple.value)) return false;
+		return shiftExpression.equals(tuple.shiftExpression);
 	}
 
 	@Override
 	public int hashCode() {
-		int result = key != null ? key.hashCode() : 0;
-		result = 31 * result + (value != null ? value.hashCode() : 0);
+		int result = key.hashCode();
+		result = 31 * result + value.hashCode();
+		result = 31 * result + shiftExpression.hashCode();
 		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "[" + key + " -> " + value + "]";
+		return "[" + key + " -> " + value + " (" + shiftExpression + ")]";
 	}
 }

@@ -7,10 +7,8 @@ import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
 import hudson.util.ComboBoxModel;
 import hudson.util.FormValidation;
-import hudson.util.ListBoxModel;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
@@ -95,8 +93,9 @@ public class BuildTimestampWrapper extends BuildWrapper {
 			JSONObject data = (JSONObject) obj;
 			String key = data.getString("key");
 			String value = data.getString("value");
-			if (isVariableNameValid(key) && isPatternValid(value)) {
-				properties.add(new Tuple(key, value));
+			String shiftExpression = data.getString("shiftExpression");
+			if (isVariableNameValid(key) && isPatternValid(value) && ShiftExpressionHelper.isShiftExpressionValid(shiftExpression)) {
+				properties.add(new Tuple(key, value, shiftExpression));
 			}
 		}
 
@@ -153,6 +152,13 @@ public class BuildTimestampWrapper extends BuildWrapper {
 				return FormValidation.ok();
 			}
 			return FormValidation.error("Invalid pattern");
+		}
+
+		public FormValidation doCheckShiftExpression(@QueryParameter("shiftExpression") String shiftExpression) {
+			if (ShiftExpressionHelper.isShiftExpressionValid(shiftExpression)) {
+				return FormValidation.ok();
+			}
+			return FormValidation.error("Invalid time shift expression");
 		}
 
 		public ComboBoxModel doFillTimezoneItems() {
