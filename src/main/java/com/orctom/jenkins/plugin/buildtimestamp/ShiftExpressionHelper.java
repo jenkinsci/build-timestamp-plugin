@@ -17,14 +17,18 @@ public class ShiftExpressionHelper {
         Calendar timestamp2 = (Calendar)timestamp.clone();
         if(!StringUtils.isEmpty(shiftExpression)) {
             Matcher m = shiftExpressionPattern.matcher(shiftExpression);
-            int sign = "+".equals(m.group(1)) ? 1 : -1;
-            int days = Integer.valueOf(m.group(2)) * sign;
-            int hours = Integer.valueOf(m.group(3)) * sign;
-            int minutes = Integer.valueOf(m.group(4)) * sign;
+            if(m.matches()) {
+                int sign = "-".equals(m.group(1)) ? -1 : 1;
+                int days = Integer.valueOf(m.group(2)) * sign;
+                int hours = Integer.valueOf(m.group(3)) * sign;
+                int minutes = Integer.valueOf(m.group(4)) * sign;
 
-            timestamp2.add(Calendar.DAY_OF_MONTH, days);
-            timestamp2.add(Calendar.HOUR_OF_DAY, hours);
-            timestamp2.add(Calendar.MINUTE, minutes);
+                timestamp2.add(Calendar.DAY_OF_MONTH, days);
+                timestamp2.add(Calendar.HOUR_OF_DAY, hours);
+                timestamp2.add(Calendar.MINUTE, minutes);
+            } else {
+
+            }
         }
 
         return timestamp2;

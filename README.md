@@ -8,3 +8,7 @@ Set the timezone to corresponding city, such as `America/New_York` to display Da
 
 ## More vars and formats
 Add more var names and formats if you need.
+
+## Optional date/time shift
+For additional variables you can define shift (days, hours, minutes) which will be added to build timestamp.
+This allows to run build plan with previous day specified as parameter.
