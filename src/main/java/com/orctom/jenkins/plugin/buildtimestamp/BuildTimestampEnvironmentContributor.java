@@ -43,8 +43,8 @@ public class BuildTimestampEnvironmentContributor extends EnvironmentContributor
 
 			setTimestamp(timestampProperties, DEFAULT_PROPERTY, format(timestamp, timeZone, pattern, ""));
 
-			Set<Tuple> extraProperties = descriptor.getExtraProperties();
-			for (Tuple property : extraProperties) {
+			Set<BuildTimestampExtraProperty> extraProperties = descriptor.getExtraProperties();
+			for (BuildTimestampExtraProperty property : extraProperties) {
 				setTimestamp(timestampProperties, property.getKey(), format(timestamp, timeZone, property.getValue(), property.getShiftExpression()));
 			}
 		}
