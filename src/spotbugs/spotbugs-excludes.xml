@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <!--
+    Exclusions in this section have been triaged and determined to be false positives.
+  -->
+
+  <!--
+    Here lies technical debt. Exclusions in this section have not yet been triaged. When working on
+    on this section, pick an exclusion to triage, then:
+    - If it is a false positive, add a @SuppressFBWarnings(value = "[…]", justification = "[…]")
+      annotation indicating the reason why it is a false positive, then remove the exclusion from
+      this section.
+    - If it is not a false positive, fix the bug, then remove the exclusion from this section.
+   -->
+  <Match>
+    <Or>
+      <And>
+        <Bug pattern="ES_COMPARING_PARAMETER_STRING_WITH_EQ"/>
+        <Class name="com.orctom.jenkins.plugin.buildtimestamp.ShiftExpressionHelper"/>
+      </And>
+      <And>
+        <Bug pattern="DM_BOXED_PRIMITIVE_FOR_PARSING"/>
+        <Class name="com.orctom.jenkins.plugin.buildtimestamp.ShiftExpressionHelper"/>
+      </And>
+    </Or>
+  </Match>
+</FindBugsFilter>
