@@ -148,22 +148,22 @@ public class BuildTimestampWrapper extends BuildWrapper {
 			}
 		}
 
-		public FormValidation doCheckKey(@QueryParameter("key") String key) {
-			if (isVariableNameValid(key)) {
+		public FormValidation doCheckKey(@QueryParameter String value) {
+			if (isVariableNameValid(value)) {
 				return FormValidation.ok();
 			}
 			return FormValidation.error("Invalid variable name");
 		}
 
-		public FormValidation doCheckValue(@QueryParameter("value") String value) {
+		public FormValidation doCheckValue(@QueryParameter String value) {
 			if (isPatternValid(value)) {
 				return FormValidation.ok();
 			}
 			return FormValidation.error("Invalid pattern");
 		}
 
-		public FormValidation doCheckShiftExpression(@QueryParameter("shiftExpression") String shiftExpression) {
-			if (ShiftExpressionHelper.isShiftExpressionValid(shiftExpression)) {
+		public FormValidation doCheckShiftExpression(@QueryParameter String value) {
+			if (ShiftExpressionHelper.isShiftExpressionValid(value)) {
 				return FormValidation.ok();
 			}
 			return FormValidation.error("Invalid time shift expression");
