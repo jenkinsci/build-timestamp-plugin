@@ -1,3 +1,3 @@
 _extends: .github
-tag-template: role-strategy-$NEXT_MINOR_VERSION
+tag-template: build-timestamp-$NEXT_PATCH_VERSION
 version-template: $MAJOR.$MINOR.$PATCH
