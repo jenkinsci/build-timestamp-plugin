@@ -14,7 +14,7 @@
 
     <scm>
         <url>https://github.com/${gitHubRepo}</url>
-	<connection>scm:git:https://github.com/${gitHubRepo}</connection>
+        <connection>scm:git:https://github.com/${gitHubRepo}</connection>
         <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
         <tag>${scmTag}</tag>
     </scm>
@@ -23,7 +23,8 @@
         <revision>1.0.5</revision>
         <changelist>-SNAPSHOT</changelist>
         <gitHubRepo>jenkinsci/build-timestamp-plugin</gitHubRepo>
-        <jenkins.version>2.440.3</jenkins.version>
+        <jenkins.baseline>2.440</jenkins.baseline>
+        <jenkins.version>${jenkins.baseline}.3</jenkins.version>
         <spotbugs.effort>Max</spotbugs.effort>
         <spotbugs.threshold>Low</spotbugs.threshold>
     </properties>
@@ -65,7 +66,7 @@
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.440.x</artifactId>
+                <artifactId>bom-${jenkins.baseline}.x</artifactId>
                 <version>3435.v238d66a_043fb_</version>
                 <scope>import</scope>
                 <type>pom</type>
