@@ -85,8 +85,7 @@ public class BuildTimestampWrapper extends BuildWrapper {
 
 		private Set<BuildTimestampExtraProperty> extractExtraProperties(Object extraPropertyValues) {
 			Set<BuildTimestampExtraProperty> properties = new HashSet<BuildTimestampExtraProperty>();
-			if (extraPropertyValues instanceof JSONArray) {
-				JSONArray array = (JSONArray) extraPropertyValues;
+			if (extraPropertyValues instanceof JSONArray array) {
 				for (Object item : array) {
 					addProperty(properties, item);
 				}
