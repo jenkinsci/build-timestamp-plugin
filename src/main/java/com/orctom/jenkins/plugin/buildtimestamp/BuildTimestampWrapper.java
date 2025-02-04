@@ -12,7 +12,7 @@ import net.sf.json.JSONObject;
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
-import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerRequest2;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -51,7 +51,7 @@ public class BuildTimestampWrapper extends BuildWrapper {
 		}
 
 		@Override
-		public boolean configure(StaplerRequest req, JSONObject formData) throws Descriptor.FormException {
+		public boolean configure(StaplerRequest2 req, JSONObject formData) throws Descriptor.FormException {
 			// reset optional authentication to default before data-binding
 			this.enableBuildTimestamp = false;
 			this.timezone = null;
