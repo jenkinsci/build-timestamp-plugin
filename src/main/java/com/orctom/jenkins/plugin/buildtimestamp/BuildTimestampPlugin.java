@@ -1,19 +1,5 @@
 package com.orctom.jenkins.plugin.buildtimestamp;
 
-import hudson.EnvVars;
-import hudson.Extension;
-import hudson.Launcher;
-import hudson.model.*;
-import hudson.model.listeners.RunListener;
-import jenkins.model.Jenkins;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import org.kohsuke.stapler.StaplerRequest;
-
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
 /**
  * set build timestamp property to build
  * Created by hao on 12/15/15.
