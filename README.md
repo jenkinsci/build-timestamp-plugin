@@ -1,5 +1,3 @@
-# [LOOK FOR NEW MAINTAINER]
-
 # Build Timestamp Plugin
 
 Adding `BUILD_TIMESTAMP` to Jenkins env vars,
@@ -51,3 +49,11 @@ Shell:
 ```
 "$BUILD_TIMESTAMP"
 ```
+
+## Contributing
+
+Refer to our [contribution guidelines](https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md).
+
+## LICENSE
+
+Licensed under MIT, see [LICENSE](LICENSE.md).
