@@ -1,7 +1,5 @@
 package com.orctom.jenkins.plugin.buildtimestamp;
 
-import org.apache.commons.lang.StringUtils;
-
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,7 +13,7 @@ public class ShiftExpressionHelper {
 
     public static Calendar doShift(Calendar timestamp, String shiftExpression) {
         Calendar timestamp2 = (Calendar)timestamp.clone();
-        if(!StringUtils.isEmpty(shiftExpression)) {
+        if(!(shiftExpression == null || shiftExpression.isEmpty())) {
             Matcher m = shiftExpressionPattern.matcher(shiftExpression);
             if(m.matches()) {
                 int sign = "-".equals(m.group(1)) ? -1 : 1;
